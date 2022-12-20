@@ -1,0 +1,6 @@
+Hacking Web servers
+
+skipfish -o /root/test -S /usr/share/skipfish/dicionaries/compelete.wl <ip>:port
+
+
+uniscan -u <ip> -q

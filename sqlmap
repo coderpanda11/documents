@@ -1,0 +1,70 @@
+SQLMAP
+
+command
+sqlmap -u <website_link> --crawl "1-4" --batch --technique="U" --thread "deafault 1 and extendable to 10" --risk "default 1 and can be set 2 or 3" --level "default 1 and be set to 5" --verbosity
+
+-u = url 
+--crawl = the measure of deapth we check for vulnerabilty(sql injection)
+--batch = this gives deafault answers to the questions asked
+--technique = this gives the exact technique we need to follow and here "U" means UNION means we are asking it to give vulnerable points just by union 
+--thread = It specifies how my connection we eed to use at once
+--risk = 
+     1 means the payloads we are trying aren't much harmful and it wont harm the server that much
+     2 means this uses time bases sql injection 
+     3 means this uses more complicated sql injection
+--level = define the impact of vulnerability and it goes higher from 1 to 5
+
+NOTE: - The use of level and risk should be done carefully as it will increase the risk of false positive
+
+--verbosity = this means if we are doing an sql injection attack then we can fetch some details and they are numbered; -
+           0 = Show only Python tracebacks, error and critical messages.
+           1 = Show also inforamtion and warning messages
+           2 = Show also debug messages
+           3 = Show also payloads injected
+           4 = Show also HTTP requests
+           5 = Show also HTTP responses' headers
+           6 = Show also HTTP responses' page content
+           
+USER ENUMERATION
+
+command 
+sqlmap -u <website_link> --current-user --current-db --hostname --dbs -D <name of the database> --tables -T <table_name> --dump --coloumns 
+
+--current-user = to show the current user 
+--current-db = to show the current database
+--hostname = to determine the host name 
+--dbs = shows all the databases
+-D = to use the databse
+--tables = to fetch all the tables from the database
+-T = to use the table
+--dump = to get all the information of the table
+
+NOTE : - This attack can find some hashes for password for which it will ask " do we need to do a directory based attack"
+
+--columns = to get the type of data stored in the table 
+--output-dir = to save the file at a specific location
+--user-agent= this helps to bypass the firewall
+--tamper = this helps to bypass the firewall
+
+
+
+BRUTE-FORCING LOGIN PAGE
+
+command-1 
+sqlmap -u <website_name> --forms
+
+command-2 
+sqlmap -u <website_name> --data="uname=<random>&pass=<randoom>&login=submit" -dbs
+
+NOTE :-  in brute forcing the login page we need 4 major components 
+         1 -> login page url
+         2 -> the placeholder of username
+         3 -> the placeholder of password
+         4 -> the placeholder of login
+
+
+BRUPSUITE PARAMETER TEST
+
+command 
+sqlmap -r <file_name where we have saved the burpsuite request> --batch
+

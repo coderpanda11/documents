@@ -1,0 +1,28 @@
+Self signed certificate
+
+Administrative tools -> IIS manager -> machine-name -> Connections name & server certificates
+{uder the IIS categorey} -> create self signed cert -> suggest random name for cert -> sites
+-> <site_name> -> .net compilation -> Add Binding -> select ssl cert as random name given
+-> {give the host/websiteurl} -> Refresh -> go on browser
+
+
+
+Session Hijacking
+
+Crome-> settings -> Adv. -> proxy settings -> proxy server -> give addr & port -> {w16} open 
+OWASP ZAP -> break tab-> tools -> local proxies -> gives adrr. & port of w16 -> ok
+
+in w10-> crome -> site name -> {w16} replace the name site1 to site 2 on BREAK tab in owasp on host
+
+
+DOS attack 
+
+wireshark -> tcp filter kali's ip adrr is spoofed -> task manager -> performance
+
+kali terminal -> nmap command -> msfconsole -> using /tcp/synflood-> set requirements and run
+
+another method 
+hping3 -S <ip adrr of victim> -a < ip of attacker> -p 22 --flood
+
+another method using HOIC
+
